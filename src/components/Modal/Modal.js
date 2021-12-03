@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import { createPortal } from "react-dom";
+import React, { Component } from 'react';
+import { createPortal } from 'react-dom';
 import s from './Modal.module.css';
 import PropTypes from 'prop-types';
 const modalRoot = document.querySelector('#modal-root');
 
-
 export default class Modal extends Component {
-    static propTypes = {
-        modalUrl: PropTypes.string,
-    };
-    componentDidMount() {
+  static propTypes = {
+    modalUrl: PropTypes.string,
+  };
+  componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -31,7 +30,7 @@ export default class Modal extends Component {
 
   render() {
     return createPortal(
-      <div className={s.Overlay}>
+      <div className={s.Ovrlay}>
         <div className={s.Modal} onClick={this.handleBackdropClick}>
           <img
             src={this.props.modalUrl}

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
@@ -19,7 +19,7 @@ export default class ImageInfo extends Component {
         page: 1,
         showModal: false,
         modalUrl: '',
-    }
+    };
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.query !== this.props.query) {
@@ -92,14 +92,14 @@ export default class ImageInfo extends Component {
         }
         if (status === 'resolved') {
             return (
-                <div>
+                <>
                     {this.state.showModal && (
                         <Modal onClose={this.toggleModal} modalUrl={this.state.modalUrl} />
                     )}
                     <ImageGallery photo={photo} onImgClick={this.onGalleryCardClick} />
                     {this.state.photo.length > 10 && <Button onClick={this.loadMore} />}
-                </div>
-            )
+                </>
+            );
         }
 
     }
