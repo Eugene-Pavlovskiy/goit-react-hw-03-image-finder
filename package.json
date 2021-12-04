@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "goit-react-hw-03-image-finder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eugene-Pavlovskiy/react-app.git"
+    "url": "git+https://github.com/Eugene-Pavlovskiy/goit-react-hw-03-image-finder.git"
   },
   "author": "Eugene Pavlovskiy <infopavlovskiy@gmail.com>",
   "bugs": {
-    "url": "https://github.com/Eugene-Pavlovskiy/react-app/issues"
+    "url": "https://github.com/Eugene-Pavlovskiy/goit-react-hw-03-image-finder/issues"
   },
-  "homepage": "https://eugene-pavlovskiy.github.io/react-app",
+  "homepage": "https://eugene-pavlovskiy.github.io/goit-react-hw-03-image-finder",
   "eslintConfig": {
     "extends": [
       "react-app",
