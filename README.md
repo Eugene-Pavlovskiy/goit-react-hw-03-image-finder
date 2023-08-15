@@ -1,45 +1,45 @@
-**Читать на других языках: [Русский](README.md), [Українська](README.ua.md).**
+**Read in other languages: [Russian](README.md), [Ukrainian](README.ua.md).**
 
-# Поиск изображений
+# Image Search
 
-Напиши приложение поиска изображений по ключевому слову. Превью рабочего
-приложения
-[смотри по ссылке](https://drive.google.com/file/d/1oXCGyiq4uKwW0zzraZLKk4lh3voBlBzZ/view?usp=sharing).
+Write a keyword image search application. Preview of a working
+application
+[see link](https://drive.google.com/file/d/1oXCGyiq4uKwW0zzraZLKk4lh3voBlBzZ/view?usp=sharing).
 
-Создай компоненты `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
-`<Loader>`, `<Button>` и `<Modal>`. Готовые стили компонентов можно взять в
-файле [styles.css](./styles.css) и подправить под себя, если необходимо.
+Create the components `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
+`<Loader>`, `<Button>` and `<Modal>`. Ready styles of components can be taken from
+file [styles.css](./styles.css) and tweaked it to your liking as needed.
 
 ![preview](./mockup/preview.jpg)
 
-## Инструкция Pixabay API
+## Instruction Pixabay API
 
-Для HTTP-запросов используй публичный сервис поиска изображений
-[Pixabay](https://pixabay.com/api/docs/). Зарегистрируйся и получи приватный
-ключ доступа.
+For HTTP requests, use the public image search service
+[Pixabay](https://pixabay.com/api/docs/). Register and get a private
+access key.
 
-URL-строка HTTP-запроса.
+URL string of the HTTP request.
 
 ```bash
 https://pixabay.com/api/?q=что_искать&page=номер_страницы&key=твой_ключ&image_type=photo&orientation=horizontal&per_page=12
 ```
 
-Pixabay API поддерживает пагинацию, по умолчанию параметр `page` равен `1`.
-Пусть в ответе приходит по 12 объектов, установлено в параметре `per_page`. Не
-забудь что при поиске по новому ключевому слову, необходимо сбрасывать значение
-`page` в `1`.
+Pixabay API supports pagination, by default the `page` parameter is `1`.
+Let 12 objects come in the response, set in the `per_page` parameter. Don't
+remember that when searching for a new keyword, it is necessary to reset the value of
+`page` to `1`.
 
-В ответе от апи приходит массив объектов, в которых тебе интересны только
-следущие свойства.
+The response from the API comes with an array of objects in which you are only interested in the following properties.
+the following properties.
 
-- `id` - уникальный идентификатор
-- `webformatURL` - ссылка на маленькое изображение для списка карточек
-- `largeImageURL` - ссылка на большое изображение для модального окна
+- `id` - unique ID
+- `webformatURL` - link to a small image for the card list
+- `largeImageURL` - link to the large image for the modal window
 
-## Описание компонента Searchbar
+## Searchbar component description
 
-Компонент принимает один проп `onSubmit` - функцию для передачи значения инпута
-при сабмите формы. Создает DOM-элемент следующей структуры.
+The component takes one prop `onSubmit` - a function to pass the value of the input
+when submitting a form. Creates a DOM element of the following structure.
 
 ```html
 <header className="Searchbar">
@@ -59,20 +59,20 @@ Pixabay API поддерживает пагинацию, по умолчанию
 </header>
 ```
 
-## Описание компонента ImageGallery
+## Component Description ImageGallery
 
-Список карточек изображений. Создает DOM-элемент следующей структуры.
+List of image cards. Creates a DOM element of the following structure.
 
 ```html
 <ul className="ImageGallery">
-  <!-- Набор <li> с изображениями -->
+  <!-- Set <li> with images -->
 </ul>
 ```
 
-## Описание компонента ImageGalleryItem
+## Component Description ImageGalleryItem
 
-Компонент элемента списка с изображением. Создает DOM-элемент следующей
-структуры.
+List item components with an image. Creates a DOM element with the following
+structure.
 
 ```html
 <li className="ImageGalleryItem">
@@ -80,12 +80,12 @@ Pixabay API поддерживает пагинацию, по умолчанию
 </li>
 ```
 
-## Описание компонента Button
+## Component Description Button
 
-При нажатии на кнопку `Load more` должна догружаться следующая порция
-изображений и рендериться вместе с предыдущими. После загрузки и рендера новой
-партии изображений страница должна плавно скролиться. Для скрола используй
-следующий код.
+When you press the `Load more` button, the next portion of images should be loaded and rendered together with the previous ones.
+images and render together with the previous ones. After loading and rendering a new
+batch of images, the page should scroll smoothly. For scrolling use
+the following code.
 
 ```js
 window.scrollTo({
@@ -94,26 +94,26 @@ window.scrollTo({
 });
 ```
 
-Кнопка должна рендерится только тогда, когда есть какие-то загруженные
-изобаржения. Если массив изображений пуст, кнопка не рендерится.
+The button should only render when there are some loaded
+images. If the image array is empty, the button is not rendered.
 
-## Описание компонента Loader
+## Component Description Loader
 
-Компонент спинера, отображется пока идет загрузка изобаржений. Используй любой
-готовый компонент, например
-[react-loader-spinner](https://github.com/mhnpd/react-loader-spinner) или любой
-другой.
+The spinner component is displayed while the isobars are loading. Use any
+off-the-shelf component, such as
+[react-loader-spinner](https://github.com/mhnpd/react-loader-spinner) or any
+other.
 
-## Описание компонента Modal
+## Component Description Modal
 
-При клике по элементу галереи должно открываться модальное окно с темным
-оверлеем и отображаться большая версия изображения. Модальное окно должно
-закрываться по нажатию клавиши `ESC` или по клику на оверлее.
+Clicking on a gallery item should open a modal window with a dark overlay and display a large version of the image.
+overlay and display a large version of the image. The modal window should
+close by pressing the `ESC` key or clicking on the overlay.
 
-Внешний вид похож на функционал этого
-[VanillaJS-плагина](https://basiclightbox.electerious.com/), только вместо
-белого модального окна рендерится изображение (в примере нажми `Run`). Анимацию
-делать не нужно!
+The appearance is similar to the functionality of this
+[VanillaJS-plugin](https://basiclightbox.electerious.com/), only instead of the
+white modal window, the image is rendered (in the example, click `Run`). Animation
+is not necessary!
 
 ```html
 <div className="Overlay">
